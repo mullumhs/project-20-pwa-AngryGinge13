@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
-</html>
+<body>
+  <h1>Car Inventory</h1>
+  <a href="{{ url_for('add_car') }}">Add a New Car</a>
+  <table></table>
+</body>
+<style>
+  body {
+    font-family: "Segoe UI", sans-serif;
+    align-items: center;
+  }
+</style>
+
+<table>
+  <tr>
+    <th>Title</th>
+
+    <th>Director</th>
+
+    <th>Year</th>
+
+    <th>Rating</th>
+  </tr>
+
+  {% for car in carss %}
+
+  <tr>
+    <td>{{ car['make'] }}</td>
+
+    <td>{{ car['model'] }}</td>
+
+    <td>{{ car['color'] }}</td>
+
+    <td>{{ car['year'] }}</td>
+
+    <td>{{ car['odometer'] }}</td>
+  </tr>
+
+  {% endfor %}
+</table>
