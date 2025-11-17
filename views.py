@@ -1,5 +1,7 @@
 from flask import render_template, request, redirect, url_for, flash
-from models import db # Also import your database model here
+from models import db, Car
+
+
 
 # Define your routes inside the 'init_routes' function
 # Feel free to rename the routes and functions as you see fit
@@ -11,15 +13,26 @@ def init_routes(app):
 
     @app.route('/', methods=['GET'])
     def get_items():
-        # This route should retrieve all items from the database and display them on the page.
-        return render_template('index.html', message='Displaying all items')
+        cars = Car.query.all()
+        return render_template('index.html', message='Displaying all items', cars = cars)
 
 
 
-    @app.route('/add', methods=['POST'])
+    @app.route('/add', methods=['POST', 'GET'])
     def create_item():
-        # This route should handle adding a new item to the database.
-        return render_template('index.html', message='Item added successfully')
+        if request.method == 'POST':
+            new_car = Car(
+                make=request.form['make'],
+                model=request.form['model'],
+                color=request.form['color'],
+                horsepower=int(request.form['horsepower']),
+                year=int(request.form['year']),
+                odometer=int(request.form['odometer'])
+            )
+            db.session.add(new_car)
+            db.session.commit()
+            return redirect(url_for('get_items'))
+        return render_template('add.html', message='Item added successfully')
 
 
 

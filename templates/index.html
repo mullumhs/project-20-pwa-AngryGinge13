@@ -1,6 +1,5 @@
 <body>
   <h1>Car Inventory</h1>
-  <a href="{{ url_for('add_car') }}">Add a New Car</a>
   <table></table>
 </body>
 <style>
@@ -12,16 +11,20 @@
 
 <table>
   <tr>
-    <th>Title</th>
+    <th>Make</th>
 
-    <th>Director</th>
+    <th>Model</th>
 
-    <th>Year</th>
+    <th>Color</th>
 
-    <th>Rating</th>
+    <th>Horsepower</th>
+
+    <th>year</th>
+
+    <th>odometer</th>
   </tr>
 
-  {% for car in carss %}
+  {% for car in cars %}
 
   <tr>
     <td>{{ car['make'] }}</td>
@@ -29,6 +32,8 @@
     <td>{{ car['model'] }}</td>
 
     <td>{{ car['color'] }}</td>
+
+    <td>{{ car['horsepower'] }}</td>
 
     <td>{{ car['year'] }}</td>
 
