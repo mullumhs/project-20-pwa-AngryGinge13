@@ -1,44 +1,27 @@
-<body>
-  <h1>Car Inventory</h1>
-  <table></table>
-</body>
-<style>
-  body {
-    font-family: "Segoe UI", sans-serif;
-    align-items: center;
-  }
-</style>
-
-<table>
-  <tr>
-    <th>Make</th>
-
-    <th>Model</th>
-
-    <th>Color</th>
-
-    <th>Horsepower</th>
-
-    <th>year</th>
-
-    <th>odometer</th>
-  </tr>
-
-  {% for car in cars %}
-
-  <tr>
-    <td>{{ car['make'] }}</td>
-
-    <td>{{ car['model'] }}</td>
-
-    <td>{{ car['color'] }}</td>
-
-    <td>{{ car['horsepower'] }}</td>
-
-    <td>{{ car['year'] }}</td>
-
-    <td>{{ car['odometer'] }}</td>
-  </tr>
-
-  {% endfor %}
+{% extends "base.html" %} {% block title %}Home - My Inventory App{% endblock %}
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Color</th>
+      <th>Horsepower</th>
+      <th>Year</th>
+      <th>Odometer</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for car in cars %}
+    <tr>
+      <td>{{ car['make'] }}</td>
+      <td>{{ car['model'] }}</td>
+      <td>{{ car['color'] }}</td>
+      <td>{{ car['horsepower'] }}</td>
+      <td>{{ car['year'] }}</td>
+      <td>{{ car['odometer'] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
+{% endblock %}
