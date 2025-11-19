@@ -3,6 +3,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Image</th>
       <th>Make</th>
       <th>Model</th>
       <th>Color</th>
@@ -14,6 +15,15 @@
   <tbody>
     {% for car in cars %}
     <tr>
+      <td>
+        {% if car.image %}
+        <img
+          src="{{ url_for('car_image', car_id=car.id) }}"
+          alt="Car image"
+          width="300"
+        />
+        {% else %} No image {% endif %}
+      </td>
       <td>{{ car['make'] }}</td>
       <td>{{ car['model'] }}</td>
       <td>{{ car['color'] }}</td>
