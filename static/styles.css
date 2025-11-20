@@ -1,0 +1,37 @@
+body {
+  background-color: #556f44; /* whole page background */
+  margin: 0;
+  font-family: s, sans-serif;
+}
+
+.topnav {
+  background-color: #659b5e;
+  display: flex;
+  justify-content: space-between; /* left and right sections */
+  align-items: center;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* shadow underneath */
+}
+
+.topnav .logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.topnav .nav-right a {
+  background-color: #fff;
+  color: #165719;
+  padding: 0.6rem 1.2rem;
+  margin-left: 0.8rem;
+  border-radius: 25px; /* bubble/pill shape */
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.topnav .nav-right a:hover {
+  background-color: #0c0c0c;
+  color: #fff;
+  transform: scale(1.05); /* subtle grow effect */
+}

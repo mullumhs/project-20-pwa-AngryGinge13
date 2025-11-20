@@ -15,6 +15,13 @@ def init_routes(app):
     def get_items():
         cars = Car.query.all()
         return render_template('index.html', message='Displaying all items', cars = cars)
+    
+    @app.route('/veiw', methods=['POST'])
+    def update_item():
+        cars = Car.query.all()
+        # This route should handle updating an existing item identified by the given ID.
+        return render_template('index.html', message='Displaying all items', cars = cars)
+
 
 
 
@@ -54,13 +61,10 @@ def init_routes(app):
 
         return render_template('add.html', message='Item added successfully')
 
-
-
-    @app.route('/update', methods=['POST'])
-    def update_item():
-        # This route should handle updating an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item updated successfully')
-
+    #@app.route('/update', method=['POST'])
+   # def veiw_item():
+       # return render_template('index.html', message=f'Item updated successfully')
+    
 
 
     @app.route('/delete', methods=['POST'])
