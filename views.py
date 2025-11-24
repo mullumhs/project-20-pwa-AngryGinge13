@@ -16,11 +16,10 @@ def init_routes(app):
         cars = Car.query.all()
         return render_template('index.html', message='Displaying all items', cars = cars)
     
-    @app.route('/veiw', methods=['POST'])
-    def update_item():
-        cars = Car.query.all()
-        # This route should handle updating an existing item identified by the given ID.
-        return render_template('index.html', message='Displaying all items', cars = cars)
+    @app.route('/view/<id>', methods=['GET'])
+    def update_item(id):
+        car = Car.query.get(id)
+        return render_template('view.html', car = car)
 
 
 
@@ -69,5 +68,10 @@ def init_routes(app):
 
     @app.route('/delete', methods=['POST'])
     def delete_item():
-        # This route should handle deleting an existing item identified by the given ID.
+        
+        car_id = request.form['id']
+        car = Car.query.get(id)
+
+        db.session.delete(car)
+        db.session.commit()
         return render_template('index.html', message=f'Item deleted successfully')

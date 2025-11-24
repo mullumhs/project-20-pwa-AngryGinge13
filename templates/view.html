@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block title %}Home - My Inventory App{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='views.css') }}" />
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card" style="width: 60rem">
+            <img
+              class="card-img-top"
+              src="{{ url_for('car_image', car_id=car.id) }}"
+              alt="Card image cap"
+              width="300"
+            />
+            <div class="card-body big-text">
+              <h5 class="card-title">{{ car['make'] }} {{ car['model'] }}</h5>
+              <p>Make: {{ car['make'] }}</p>
+              <p>Model: {{ car['model'] }}</p>
+              <p>Color: {{ car['color'] }}</p>
+              <p>Horsepower: {{ car['horsepower'] }}</p>
+              <p>Year: {{ car['year'] }}</p>
+              <p>Odometer: {{ car['odometer'] }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </div>
+</div>
