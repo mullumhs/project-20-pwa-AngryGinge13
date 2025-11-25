@@ -17,7 +17,7 @@ def init_routes(app):
         return render_template('index.html', message='Displaying all items', cars = cars)
     
     @app.route('/view/<id>', methods=['GET'])
-    def update_item(id):
+    def view_item(id):
         car = Car.query.get(id)
         return render_template('view.html', car = car)
 
@@ -60,18 +60,31 @@ def init_routes(app):
 
         return render_template('add.html', message='Item added successfully')
 
-    #@app.route('/update', method=['POST'])
-   # def veiw_item():
-       # return render_template('index.html', message=f'Item updated successfully')
+    @app.route('/car/<int:car_id>/update', methods=['GET', 'POST'])
+    def update_car(car_id):
+        car = Car.query.get_or_404(car_id)
+
+        if request.method == 'POST':
+            car.make = request.form['make']
+            car.model = request.form['model']
+            car.color = request.form['color']
+            car.horsepower = request.form['horsepower']
+            car.year = request.form['year']
+            car.odometer = request.form['odometer']
+
+            db.session.commit()
+            return redirect(url_for('view_item', id=car.id))  # back to detail page
+
+        return render_template('edit.html', car=car)
+
+
     
 
 
     @app.route('/delete', methods=['POST'])
     def delete_item():
-        
         car_id = request.form['id']
-        car = Car.query.get(id)
-
+        car = Car.query.get(car_id)
         db.session.delete(car)
         db.session.commit()
-        return render_template('index.html', message=f'Item deleted successfully')
+        return redirect(url_for('get_items'))

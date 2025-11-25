@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Update Car{% endblock %} {% block
+content %}
+<div class="container">
+  <h2>Update Car</h2>
+  <form method="POST">
+    <label>Make:</label>
+    <input type="text" name="make" value="{{ car.make }}" /><br />
+
+    <label>Model:</label>
+    <input type="text" name="model" value="{{ car.model }}" /><br />
+
+    <label>Color:</label>
+    <input type="text" name="color" value="{{ car.color }}" /><br />
+
+    <label>Horsepower:</label>
+    <input type="number" name="horsepower" value="{{ car.horsepower }}" /><br />
+
+    <label>Year:</label>
+    <input type="number" name="year" value="{{ car.year }}" /><br />
+
+    <label>Odometer:</label>
+    <input type="number" name="odometer" value="{{ car.odometer }}" /><br />
+    <button type="submit">Save Changes</button>
+  </form>
+</div>
+{% endblock %}

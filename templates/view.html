@@ -21,6 +21,10 @@
               <p>Horsepower: {{ car['horsepower'] }}</p>
               <p>Year: {{ car['year'] }}</p>
               <p>Odometer: {{ car['odometer'] }}</p>
+              <form action="{{ url_for('delete_item') }}" method="POST">
+                <input type="hidden" name="id" value="{{ car.id }}" />
+                <button type="submit">Delete</button>
+              </form>
             </div>
           </div>
         </div>
