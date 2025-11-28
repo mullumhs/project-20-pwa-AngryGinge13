@@ -60,7 +60,7 @@ def init_routes(app):
 
         return render_template('add.html', message='Item added successfully')
 
-    @app.route('/car/<int:car_id>/update', methods=['GET', 'POST'])
+    @app.route('/car/<int:car_id>/update', methods=['GET', 'POST'], endpoint='update_car')
     def update_car(car_id):
         car = Car.query.get_or_404(car_id)
 

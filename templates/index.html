@@ -22,7 +22,8 @@
             <p><td>Odometer: {{ car['odometer'] }}</td></p>
           </p>
           <a href="{{ url_for('view_item', id=car.id) }}" class="btn btn-primary">View</a>
-          <a href="{{ url_for('update_item', car_id=car.id) }}" class="btn btn-warning">Edit</a>
+          <a href="{{ url_for('update_car', car_id=car.id) }}" class="btn btn-secondary">>Update Car</a>
+
 
         </div>
       </div>
@@ -31,3 +32,4 @@
   </div>
 </div>
 {% endblock %}
+<a href="{{ url_for('update_item', car_id=car.id) }}" class="btn btn-warning">Edit</a>
