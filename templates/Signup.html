@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Home - My Inventory App{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<form method="post" enctype="multipart/form-data">
+  <input
+    class="form-control mb-2"
+    type="text"
+    name="Username"
+    placeholder="Username"
+  />
+  <input
+    class="form-control mb-2"
+    type="text"
+    name="Enter your Email"
+    placeholder="Email"
+  />
+  <input
+    class="form-control mb-2"
+    type="text"
+    name="Enter your password"
+    placeholder="Password"
+  />
+  <button type="submit" class="btn btn-primary">Add Car</button>
+  {% endblock %}
+</form>

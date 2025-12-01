@@ -12,19 +12,23 @@
           width="300"
         />
         <div class="card-body">
-          <h5 class="card-title">{{ car['make'] }} {{ car['model'] }}</h5>
-          <p class="card-text">
-            <p><td>Make: {{ car['make'] }}</td></p>
-            <p><td>Model: {{ car['model'] }}</td></p>
-            <p><td>Color: {{ car['color'] }}</td></p>
-            <p><td>Horsepower: {{ car['horsepower'] }}</td></p>
-            <p><td>Year: {{ car['year'] }}</td></p>
-            <p><td>Odometer: {{ car['odometer'] }}</td></p>
-          </p>
-          <a href="{{ url_for('view_item', id=car.id) }}" class="btn btn-primary">View</a>
-          <a href="{{ url_for('update_car', car_id=car.id) }}" class="btn btn-secondary">>Update Car</a>
-
-
+          <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
+          <p>Make: {{ car.make }}</p>
+          <p>Model: {{ car.model }}</p>
+          <p>Color: {{ car.color }}</p>
+          <p>Horsepower: {{ car.horsepower }}</p>
+          <p>Year: {{ car.year }}</p>
+          <p>Odometer: {{ car.odometer }}</p>
+          <a
+            href="{{ url_for('view_item', id=car.id) }}"
+            class="btn btn-primary"
+            >View</a
+          >
+          <a
+            href="{{ url_for('update_car', car_id=car.id) }}"
+            class="btn btn-secondary"
+            >Update Car</a
+          >
         </div>
       </div>
     </div>
@@ -32,4 +36,3 @@
   </div>
 </div>
 {% endblock %}
-<a href="{{ url_for('update_item', car_id=car.id) }}" class="btn btn-warning">Edit</a>

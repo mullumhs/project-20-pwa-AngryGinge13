@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cars.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///info.db'
 db = SQLAlchemy(app)
 
 
@@ -17,6 +18,11 @@ class Car(db.Model):
     odometer = db.Column(db.Integer)
     image = db.Column(db.LargeBinary)
     filename = db.Column(db.String(100))
+
+class Info(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String)
+    password = db.Column(db.String)
     
 
     def __repr__(self):

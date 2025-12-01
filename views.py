@@ -1,28 +1,17 @@
 from flask import render_template, request, redirect, url_for, flash
-from models import db, Car
-
-
-
-# Define your routes inside the 'init_routes' function
-# Feel free to rename the routes and functions as you see fit
-# You may need to use multiple methods such as POST and GET for each route
-# You can use render_template or redirect as appropriate
-# You can also use flash for displaying status messages
+from models import db, Car, Info
 
 def init_routes(app):
 
     @app.route('/', methods=['GET'])
     def get_items():
         cars = Car.query.all()
-        return render_template('index.html', message='Displaying all items', cars = cars)
-    
+        return render_template('index.html', message='Displaying all items', cars=cars)
+
     @app.route('/view/<id>', methods=['GET'])
     def view_item(id):
         car = Car.query.get(id)
-        return render_template('view.html', car = car)
-
-
-
+        return render_template('view.html', car=car)
 
     @app.route('/car_image/<int:car_id>')
     def car_image(car_id):
@@ -30,8 +19,6 @@ def init_routes(app):
         if car.image:
             return car.image, 200, {"Content-Type": "image/jpeg"}
         return "No image", 404
-
-
 
     @app.route('/add', methods=['POST', 'GET'])
     def create_item():
@@ -73,13 +60,9 @@ def init_routes(app):
             car.odometer = request.form['odometer']
 
             db.session.commit()
-            return redirect(url_for('view_item', id=car.id))  # back to detail page
+            return redirect(url_for('view_item', id=car.id))
 
         return render_template('edit.html', car=car)
-
-
-    
-
 
     @app.route('/delete', methods=['POST'])
     def delete_item():
@@ -88,3 +71,14 @@ def init_routes(app):
         db.session.delete(car)
         db.session.commit()
         return redirect(url_for('get_items'))
+
+    # @app.route('/signup', methods=['POST', 'GET'])
+    # def sign_up():
+    #     if request.method == 'POST':
+    #         email = request.form.get('email')
+    #         password = request.form.get('password')
+    #         new_user = Info(email=email, password=password)
+    #         db.session.add(new_user)
+    #         db.session.commit()
+    #         return redirect(url_for('get_items'))
+    #     return render_template('signup.html')
