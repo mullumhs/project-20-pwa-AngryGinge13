@@ -2,14 +2,11 @@ from flask import Flask
 from models import db
 from views import init_routes
 
-# Create the Flask app and configure it
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dev'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Cars.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Info.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# Initialise the database and routes
 db.init_app(app)
 init_routes(app)
 

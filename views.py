@@ -20,6 +20,45 @@ def init_routes(app):
             return car.image, 200, {"Content-Type": "image/jpeg"}
         return "No image", 404
 
+    @app.route('/car/<int:car_id>/update', methods=['GET', 'POST'], endpoint='update_car')
+    def update_car(car_id):
+        car = Car.query.get_or_404(car_id)
+
+        if request.method == 'POST':
+            car.make = request.form['make']
+            car.model = request.form['model']
+            car.color = request.form['color']
+            car.horsepower = request.form['horsepower']
+            car.year = request.form['year']
+            car.odometer = request.form['odometer']
+
+            db.session.commit()
+            return redirect(url_for('view_item', id=car.id))
+
+        return render_template('edit.html', car=car)
+
+    @app.route('/delete', methods=['POST'])
+    def delete_item():
+        car_id = request.form['id']
+        car = Car.query.get(car_id)
+        db.session.delete(car)
+        db.session.commit()
+        return redirect(url_for('get_items'))
+
+    @app.route('/signup', methods=['POST', 'GET'])
+    def sign_up():
+         if request.method == 'POST':
+            
+            new_user = Info(
+                email = request.form.get('email'),
+                password = request.form.get('password')
+            )
+            
+            db.session.add(new_user)
+            db.session.commit()
+            return redirect(url_for('get_items'))
+         return render_template('signup.html')
+
     @app.route('/add', methods=['POST', 'GET'])
     def create_item():
         if request.method == 'POST':
@@ -46,39 +85,16 @@ def init_routes(app):
             return redirect(url_for('get_items'))
 
         return render_template('add.html', message='Item added successfully')
-
-    @app.route('/car/<int:car_id>/update', methods=['GET', 'POST'], endpoint='update_car')
-    def update_car(car_id):
-        car = Car.query.get_or_404(car_id)
-
-        if request.method == 'POST':
-            car.make = request.form['make']
-            car.model = request.form['model']
-            car.color = request.form['color']
-            car.horsepower = request.form['horsepower']
-            car.year = request.form['year']
-            car.odometer = request.form['odometer']
-
+    
+    @app.route('/login', methods=['POST', 'GET'])
+    def Log_in():
+         if request.method == 'POST':            
+            new_user = Info(
+                email = request.form.get('email'),
+                password = request.form.get('password')
+            )
+            
+            db.session.add(new_user)
             db.session.commit()
-            return redirect(url_for('view_item', id=car.id))
-
-        return render_template('edit.html', car=car)
-
-    @app.route('/delete', methods=['POST'])
-    def delete_item():
-        car_id = request.form['id']
-        car = Car.query.get(car_id)
-        db.session.delete(car)
-        db.session.commit()
-        return redirect(url_for('get_items'))
-
-    # @app.route('/signup', methods=['POST', 'GET'])
-    # def sign_up():
-    #     if request.method == 'POST':
-    #         email = request.form.get('email')
-    #         password = request.form.get('password')
-    #         new_user = Info(email=email, password=password)
-    #         db.session.add(new_user)
-    #         db.session.commit()
-    #         return redirect(url_for('get_items'))
-    #     return render_template('signup.html')
+            return redirect(url_for('get_items'))
+         return render_template('signup.html')
