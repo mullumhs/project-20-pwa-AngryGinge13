@@ -1,0 +1,23 @@
+{% extends "base.html" %} {% block title %}Home - My Inventory App{% endblock %}
+{% block content %}
+<form method="post">
+  <input
+    class="form-control mb-2"
+    type="text"
+    name="email"
+    placeholder="Email"
+  />
+  <input
+    class="form-control mb-2"
+    type="password"
+    name="password"
+    placeholder="Password"
+  />
+
+  {% if error %}
+  <div class="alert alert-danger" role="alert">{{ error }}</div>
+  {% endif %}
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+
+{% endblock %}

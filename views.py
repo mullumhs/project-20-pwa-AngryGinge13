@@ -45,19 +45,24 @@ def init_routes(app):
         db.session.commit()
         return redirect(url_for('get_items'))
 
-    @app.route('/signup', methods=['POST', 'GET'])
+    @app.route('/signup', methods=['GET', 'POST'])
     def sign_up():
-         if request.method == 'POST':
+            if request.method == 'POST':            
+                new_user = Info(
+                    email = request.form.get('email'),
+                    password = request.form.get('password')
+                )
             
-            new_user = Info(
-                email = request.form.get('email'),
-                password = request.form.get('password')
-            )
+                db.session.add(new_user)
+                db.session.commit()
+                return redirect(url_for('get_items'))
+            return render_template('signup.html')
+
+
             
-            db.session.add(new_user)
-            db.session.commit()
-            return redirect(url_for('get_items'))
-         return render_template('signup.html')
+    
+            #return redirect(url_for('get_items'))
+         #return render_template('signup.html')
 
     @app.route('/add', methods=['POST', 'GET'])
     def create_item():
@@ -88,13 +93,18 @@ def init_routes(app):
     
     @app.route('/login', methods=['POST', 'GET'])
     def Log_in():
-         if request.method == 'POST':            
-            new_user = Info(
-                email = request.form.get('email'),
-                password = request.form.get('password')
-            )
-            
-            db.session.add(new_user)
-            db.session.commit()
-            return redirect(url_for('get_items'))
-         return render_template('signup.html')
+        if request.method == 'GET':
+            return render_template('signup.html')
+        if request.method == 'POST':
+            email = request.form.get('email')
+            password = request.form.get('password')
+            user = Info.query.filter_by(email=email, password=password).first()
+            if user:
+                print("SUCCESS!")  
+                return redirect(url_for('get_items')) 
+            else:
+                print("INVALID CREDENTIALS")
+                return render_template('signup.html', error="Invalid email or password")
+
+
+
