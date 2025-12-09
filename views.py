@@ -107,4 +107,19 @@ def init_routes(app):
                 return render_template('signup.html', error="Invalid email or password")
 
 
+        
+        return redirect(url_for('get_items'))
+
+    @app.route('/search', methods=['GET'])
+    def search_items():
+        search_query = request.args.get('query', ' ')
+        search_query = search_query.strip().lower()
+        if search_query:
+            # If there's a search query, filter the results
+            items = Car.query.filter(Car.make.ilike(f'%{search_query}%')).all()
+        else:
+            # If no search query, return all items
+            items = Car.query.all()
+
+        return render_template('search.html', items=items)
 

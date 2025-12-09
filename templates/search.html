@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block title %} Search - My Inventory App {%
+endblock %} {% block content %}
+<form action="{{ url_for('search_items') }}" method="get" class="d-flex mb-3">
+  <input
+    class="form-control me-2"
+    type="search"
+    name="query"
+    placeholder="Search..."
+    aria-label="Search"
+  />
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+<!-- Results -->
+{% if items %}
+<ul class="list-group">
+  {% for car in items %}
+  <li class="list-group-item">
+    <strong>{{ car.make }}</strong> {{ car.model }} ({{ car.year }}) - Color: {{
+    car.color }} - Odometer: {{ car.odometer }} km
+  </li>
+  {% endfor %}
+</ul>
+
+{% else %}
+<p>No cars found.</p>
+{% endif %} {% endblock %}

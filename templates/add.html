@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% block title %}Add Car - My Inventory App{% endblock
 %} {% block content %}
-<h1>Add a New Car</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}" />
+
 <form method="post" enctype="multipart/form-data">
   <label for="formFile" class="form-label">Upload Car Image</label>
   <input class="form-control mb-2" type="text" name="make" placeholder="Make" />

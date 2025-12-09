@@ -1,0 +1,86 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #9ad2cb; /* Pearl Aqua */
+  color: #472836; /* Mauve Shadow */
+  min-height: 100vh;
+}
+
+/* Scoped Form Styles */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+}
+
+.form-wrapper form {
+  background-color: #d7ebba; /* Tea Green */
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(71, 40, 54, 0.2);
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Labels */
+.form-wrapper label.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #472836;
+}
+
+/* Inputs */
+.form-wrapper input.form-control {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #feffbe; /* Cream */
+  font-size: 1rem;
+  color: #472836;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.form-wrapper input.form-control:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(235, 212, 148, 0.6); /* Vanilla Custard glow */
+}
+
+/* File input */
+.form-wrapper input[type="file"] {
+  background-color: #fff8dc; /* Slightly off-white for contrast */
+  border: 1px dashed #472836;
+  padding: 10px;
+}
+
+/* Button */
+.form-wrapper button.btn {
+  background-color: #ebd494; /* Vanilla Custard */
+  color: #472836;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-wrapper button.btn:hover {
+  background-color: #472836;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(71, 40, 54, 0.3);
+}
