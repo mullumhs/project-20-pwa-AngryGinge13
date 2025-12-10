@@ -5,9 +5,9 @@
   <div class="row">
     {% for car in cars %}
     <div class="col-sm">
-      <div class="card" style="width: 18rem">
+      <div class="card" style="width: 18rem; height: 38rem">
         <img
-          class="card-img-top"
+          class="card-img-top img-fluid"
           src="{{ url_for('car_image', car_id=car.id) }}"
           alt="Card image cap"
           width="300"

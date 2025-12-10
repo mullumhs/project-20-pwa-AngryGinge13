@@ -33,7 +33,7 @@ def init_routes(app):
             car.odometer = request.form['odometer']
 
             db.session.commit()
-            return redirect(url_for('view_item', id=car.id))
+            return redirect(url_for('get_items', id=car.id))
 
         return render_template('edit.html', car=car)
 
@@ -94,7 +94,7 @@ def init_routes(app):
     @app.route('/login', methods=['POST', 'GET'])
     def Log_in():
         if request.method == 'GET':
-            return render_template('signup.html')
+            return render_template('login.html')
         if request.method == 'POST':
             email = request.form.get('email')
             password = request.form.get('password')
@@ -104,7 +104,7 @@ def init_routes(app):
                 return redirect(url_for('get_items')) 
             else:
                 print("INVALID CREDENTIALS")
-                return render_template('signup.html', error="Invalid email or password")
+                return render_template('login.html', error="Invalid email or password")
 
 
         
@@ -115,10 +115,8 @@ def init_routes(app):
         search_query = request.args.get('query', ' ')
         search_query = search_query.strip().lower()
         if search_query:
-            # If there's a search query, filter the results
             items = Car.query.filter(Car.make.ilike(f'%{search_query}%')).all()
         else:
-            # If no search query, return all items
             items = Car.query.all()
 
         return render_template('search.html', items=items)
