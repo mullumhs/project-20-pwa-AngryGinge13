@@ -16,4 +16,6 @@
   <button type="submit" class="btn btn-primary">Sign Up</button>
 </form>
 
-{% endblock %}
+{% if error %}
+<div class="alert alert-danger">{{ error }}</div>
+{% endif %} {% endblock %}

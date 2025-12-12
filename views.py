@@ -47,16 +47,26 @@ def init_routes(app):
 
     @app.route('/signup', methods=['GET', 'POST'])
     def sign_up():
-            if request.method == 'POST':            
-                new_user = Info(
-                    email = request.form.get('email'),
-                    password = request.form.get('password')
-                )
-            
-                db.session.add(new_user)
-                db.session.commit()
-                return redirect(url_for('get_items'))
+        if request.method == 'GET':
             return render_template('signup.html')
+
+        if request.method == 'POST':
+            email = request.form.get('email')
+            password = request.form.get('password')
+
+            if not email or not password:
+                print("EMPTY FIELDS")
+                return render_template('signup.html', error="Please enter both email and password")
+            
+            new_user = Info(
+                email=email,
+                password=password
+            )
+            db.session.add(new_user)
+            db.session.commit()
+            
+            print("USER CREATED SUCCESSFULLY")
+            return redirect(url_for('get_items'))
 
 
             
@@ -95,20 +105,24 @@ def init_routes(app):
     def Log_in():
         if request.method == 'GET':
             return render_template('login.html')
+
         if request.method == 'POST':
             email = request.form.get('email')
             password = request.form.get('password')
+
+            # First check: empty fields
+            if not email or not password:
+                print("EMPTY FIELDS")
+                return render_template('login.html', error="Please enter both email and password")
+
+            # Then check: valid user
             user = Info.query.filter_by(email=email, password=password).first()
             if user:
                 print("SUCCESS!")  
-                return redirect(url_for('get_items')) 
+                return redirect(url_for('get_items'))
             else:
                 print("INVALID CREDENTIALS")
                 return render_template('login.html', error="Invalid email or password")
-
-
-        
-        return redirect(url_for('get_items'))
 
     @app.route('/search', methods=['GET'])
     def search_items():
