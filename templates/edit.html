@@ -1,5 +1,6 @@
 {% extends "base.html" %} {% block title %}Update Car{% endblock %} {% block
 content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='edit.css') }}" />
 <div class="container">
   <h2>Update Car</h2>
   <form method="POST">
@@ -23,6 +24,9 @@ content %}
 
     <button type="submit">Save Changes</button>
   </form>
-  <a href="{{ url_for('delete_item') }}" class="btn btn-primary">Delete car</a>
+  <form action="{{ url_for('delete_item') }}" method="POST">
+    <input type="hidden" name="id" value="{{ car.id }}" />
+    <button type="submit">Delete</button>
+  </form>
 </div>
 {% endblock %}
