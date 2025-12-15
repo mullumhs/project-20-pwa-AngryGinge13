@@ -17,7 +17,7 @@ endblock %} {% block content %}
   {% for car in items %}
   <li class="list-group-item">
     <strong>{{ car.make }}</strong> {{ car.model }} ({{ car.year }}) - Color: {{
-    car.color }} - Odometer: {{ car.odometer }} km
+    car.color }} - Odometer: {{ car.odometer }} km - Engine: {{car.engine}}
   </li>
   {% endfor %}
 </ul>

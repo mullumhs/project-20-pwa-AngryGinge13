@@ -2,10 +2,10 @@
 {% block content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-start">
     {% for car in cars %}
-    <div class="col-sm">
-      <div class="card" style="width: 18rem; height: 38rem">
+    <div class="col-md 6 col-lg-3 mb-4">
+      <div class="card" style="width: 100%; height: 100%">
         <img
           class="card-img-top img-fluid"
           src="{{ url_for('car_image', car_id=car.id) }}"
@@ -20,6 +20,7 @@
           <p>Horsepower: {{ car.horsepower }}</p>
           <p>Year: {{ car.year }}</p>
           <p>Odometer: {{ car.odometer }}</p>
+          <p>Engine: {{ car.engine }}</p>
           <a
             href="{{ url_for('view_item', id=car.id) }}"
             class="btn btn-primary"

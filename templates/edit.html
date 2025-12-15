@@ -21,6 +21,12 @@ content %}
     <label>Odometer:</label>
     <input type="number" name="odometer" value="{{ car.odometer }}" /><br />
 
+    <label>Engine type:</label>
+    <input type="text" name="engine" value="{{ car.engine }}" /><br />
+
+    <label>Image:</label>
+    <input class="form-control mb-2" type="file" name="image" />
+
     <button type="submit">Save Changes</button>
   </form>
   <a href="{{ url_for('delete_item') }}" class="btn btn-primary">Delete car</a>
