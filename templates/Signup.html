@@ -1,6 +1,9 @@
 {% extends "base.html" %} {% block title %}Home - My Inventory App{% endblock %}
 {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/signup.css') }}"
+/>
 <form method="post">
   <input
     class="form-control mb-2"
