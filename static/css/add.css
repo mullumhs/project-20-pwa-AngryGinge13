@@ -1,86 +1,82 @@
-/* Base Reset */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
 body {
-  background-color: #8cb8b3; /* Pearl Aqua */
-  color: #472836; /* Mauve Shadow */
-  min-height: 100vh;
+  background: #8fbfb8;
 }
 
-/* Scoped Form Styles */
-.form-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 60px 20px;
-}
-
-.form-wrapper form {
-  background-color: #d7ebba; /* Tea Green */
-  padding: 30px 40px;
+/* center the form */
+form {
+  background: #ffffff;
+  max-width: 520px;
+  margin: 100px auto;
+  padding: 36px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(71, 40, 54, 0.2);
-  width: 100%;
-  max-width: 500px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* Labels */
-.form-wrapper label.form-label {
+/* title using pseudo-element (no HTML change needed) */
+form::before {
+  content: "Add Car";
   display: block;
-  margin-bottom: 10px;
-  font-weight: 500;
-  font-size: 1rem;
-  color: #472836;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #243b53;
+  margin-bottom: 28px;
 }
 
-/* Inputs */
-.form-wrapper input.form-control {
+/* inputs */
+.form-control {
   width: 100%;
-  padding: 12px 14px;
-  margin-bottom: 15px;
-  border: none;
+  padding: 16px;
+  margin-bottom: 18px;
   border-radius: 10px;
-  background-color: #feffbe; /* Cream */
-  font-size: 1rem;
-  color: #472836;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.2s ease;
+  border: 1px solid #dce3ea;
+  background: #f9fbfd;
+  font-size: 16px;
+  color: #243b53;
 }
 
-.form-wrapper input.form-control:focus {
+.form-control::placeholder {
+  color: #8a9aa9;
+}
+
+.form-control:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(235, 212, 148, 0.6); /* Vanilla Custard glow */
+  border-color: #3a86ff;
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.25);
+  background: #ffffff;
 }
 
-/* File input */
-.form-wrapper input[type="file"] {
-  background-color: #fff8dc; /* Slightly off-white for contrast */
-  border: 1px dashed #472836;
-  padding: 10px;
+/* file input spacing */
+input[type="file"] {
+  background: #ffffff;
 }
 
-/* Button */
-.form-wrapper button.btn {
-  background-color: #ebd494; /* Vanilla Custard */
-  color: #472836;
-  padding: 12px 24px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
+/* button */
+.btn {
   width: 100%;
+  padding: 18px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(180deg, #2f80ed, #2563eb);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.form-wrapper button.btn:hover {
-  background-color: #472836;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(71, 40, 54, 0.3);
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }

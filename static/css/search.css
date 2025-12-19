@@ -1,5 +1,90 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
 body {
-  background-color: #9ad2cb; /* Pearl Aqua */
-  color: #472836; /* Mauve Shadow */
-  min-height: 100vh;
+  background: #8fbfb8;
+}
+
+/* Page spacing */
+main {
+  padding: 60px 20px;
+}
+
+/* Search title */
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #243b53;
+}
+
+/* Search bar */
+form {
+  display: flex;
+  gap: 12px;
+  max-width: 700px;
+  margin: 0 auto 30px;
+}
+
+.form-control {
+  flex: 1;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #dce3ea;
+  font-size: 16px;
+  background: #ffffff;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #3a86ff;
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.25);
+}
+
+/* Search button */
+.btn {
+  padding: 16px 22px;
+  border-radius: 10px;
+  border: none;
+  background: #4aa39a;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #3c8f86;
+}
+
+/* Results list */
+.list-group {
+  max-width: 700px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+}
+
+.list-group-item {
+  background: #ffffff;
+  padding: 18px 22px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #243b53;
+}
+
+.list-group-item strong {
+  font-size: 18px;
+}
+
+/* Empty state */
+p {
+  text-align: center;
+  font-size: 18px;
+  color: #243b53;
 }

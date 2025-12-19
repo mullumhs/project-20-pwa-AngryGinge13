@@ -1,60 +1,74 @@
+/* ==== Base Reset ==== */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Tahoma, sans-serif;
 }
 
 body {
   background: #e6eef5;
   color: #2f3e46;
+  min-height: 100vh;
 }
 
+/* ==== Layout ==== */
 .view-layout {
   display: flex;
-  gap: 40px;
-  padding: 60px;
   justify-content: center;
+  gap: 40px;
+  padding: 60px 40px;
 }
 
+/* ==== Image Panel ==== */
 .view-image {
-  width: 50%;
-  border-radius: 26px;
-  overflow: hidden;
+  width: 320px;
+  flex-shrink: 0;
 }
 
 .view-image img {
   width: 100%;
-  display: block;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* ==== Info Card ==== */
 .view-info {
-  background: white;
+  background: #ffffff;
   padding: 30px;
-  width: 400px;
-  border-radius: 26px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
 .view-info h2 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
+/* ==== Text ==== */
 .view-info p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 15px;
 }
 
-.view-actions {
-  margin-top: 20px;
-  display: flex;
-  gap: 10px;
+.view-info strong {
+  color: #1f2937;
 }
 
-.btn {
-  padding: 8px 14px;
+/* ==== Actions ==== */
+
+.view-actions .btn {
   background: #3a86ff;
-  color: white;
-  border: none;
-  cursor: pointer;
 }
 
-.btn-danger {
+.view-actions .btn-danger {
   background: #d62828;
+}
+
+.view-actions .btn-danger:hover {
+  background: #b91c1c;
 }

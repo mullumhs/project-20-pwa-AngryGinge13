@@ -9,60 +9,66 @@ body {
   background: #e6eef5;
   color: #2f3e46;
   min-height: 100vh;
+  font-size: 18px; /* BASE FONT SIZE INCREASED */
 }
 
 .form-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 50px 20px;
+  padding: 60px 30px;
 }
 
 .form-wrapper form {
   background: #ffffff;
-  padding: 30px;
-  border-radius: 12px;
+  padding: 40px; /* bigger card padding */
+  border-radius: 16px;
   width: 100%;
-  max-width: 500px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 560px; /* wider form */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
 
 .form-wrapper form + form {
-  margin-top: 20px;
+  margin-top: 28px;
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
+  font-size: 32px; /* BIGGER HEADING */
 }
 
 .form-label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .form-control {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 16px;
+  padding: 18px; /* MUCH BIGGER INPUT */
+  margin-bottom: 22px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #f1f5f9;
+  font-size: 18px;
 }
 
 .form-control:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #90caf9;
+  box-shadow: 0 0 0 3px #90caf9;
 }
 
 .btn {
   width: 100%;
-  padding: 12px;
+  padding: 18px; /* BIGGER BUTTON */
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #3a86ff;
   color: white;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 18px;
   cursor: pointer;
 }
 
@@ -80,21 +86,24 @@ h2 {
 
 .page-layout {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 40px;
-  padding: 60px 40px;
+  align-items: stretch;
+  gap: 80px; /* more breathing room */
+  padding: 70px 50px;
+  min-height: calc(100vh - 140px);
 }
 
 .image-panel {
-  width: 300px;
-  flex-shrink: 0;
+  margin-top: 40px;
+  flex: 1;
+  max-width: 45%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .image-panel img {
-  margin-top: 50px;
   width: 100%;
-  max-height: 850px;
+  max-height: 560px;
   object-fit: cover;
-  border-radius: 26px;
+  border-radius: 28px;
 }

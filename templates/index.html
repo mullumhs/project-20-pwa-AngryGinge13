@@ -4,6 +4,7 @@
   rel="stylesheet"
   href="{{ url_for('static', filename='css/index.css') }}"
 />
+<!--container for cards-->
 <div class="container">
   <div class="row justify-content-start">
     {% for car in cars %}
@@ -15,6 +16,7 @@
           alt="Card image cap"
           width="300"
         />
+        <!--prints all info of car in card format-->
         <div class="card-body">
           <h5 class="card-title">{{ car.make }} {{ car.model }}</h5>
           <p>Make: {{ car.make }}</p>

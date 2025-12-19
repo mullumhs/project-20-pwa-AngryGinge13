@@ -1,5 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
 body {
-  background-color: #9ad2cb; /* Pearl Aqua */
-  color: #472836; /* Mauve Shadow */
+  background: #8fbfb8;
   min-height: 100vh;
+}
+
+/* center signup card */
+form {
+  background: #ffffff;
+  max-width: 420px;
+  width: 100%;
+  margin: 120px auto 0;
+  padding: 36px;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* title */
+form::before {
+  content: "Sign Up";
+  display: block;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #243b53;
+  margin-bottom: 28px;
+}
+
+/* inputs */
+.form-control {
+  width: 100%;
+  padding: 18px 16px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #dce3ea;
+  background: #f9fbfd;
+  font-size: 17px;
+  color: #243b53;
+}
+
+.form-control::placeholder {
+  color: #8a9aa9;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #3a86ff;
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.25);
+  background: #ffffff;
+}
+
+/* error message */
+.alert {
+  max-width: 420px;
+  margin: 18px auto 0;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.alert-danger {
+  background: #fde8e8;
+  color: #9b1c1c;
+  border: 1px solid #f5b5b5;
+}
+
+/* button */
+.btn {
+  width: 100%;
+  padding: 18px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(180deg, #2f80ed 0%, #2563eb 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }

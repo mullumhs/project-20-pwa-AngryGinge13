@@ -1,7 +1,7 @@
 from flask import Flask
 from models import db
 from views import init_routes
-
+#
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'dev'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Cars.db'

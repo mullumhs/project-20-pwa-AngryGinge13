@@ -1,17 +1,30 @@
+<!-- Template for search results -->
 {% extends "base.html" %} {% block title %} Search - My Inventory App {%
 endblock %} {% block content %}
+<link
+  rel="stylesheet"
+  link
+  href="{{ url_for('static', filename='css/search.css') }}"
+/>
 <form action="{{ url_for('search_items') }}" method="get" class="d-flex mb-3">
   <input
     class="form-control me-2"
     type="search"
     name="query"
-    placeholder="Search..."
-    aria-label="Search"
+    placeholder="General Search"
   />
-  <button class="btn btn-outline-success" type="submit">Search</button>
-</form>
 
-<!-- Results -->
+  <input
+    class="form-control me-2"
+    type="number"
+    name="year"
+    placeholder="Year"
+  />
+
+  <input class="form-control me-2" type="text" name="make" placeholder="Make" />
+
+  <button class="btn" type="submit">Search</button>
+</form>
 {% if items %}
 <ul class="list-group">
   {% for car in items %}
