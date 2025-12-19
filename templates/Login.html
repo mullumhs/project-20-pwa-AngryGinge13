@@ -19,7 +19,8 @@
     name="password"
     placeholder="Password"
   />
-  #pulling error message from route if login fails {% if error %}
+  <!--pulling error message from route if login fails-->
+  {% if error %}
   <div class="alert alert-danger">{{ error }}</div>
   {% endif %}
 
