@@ -1,5 +1,60 @@
-.big-text {
-  font-size: 28px;
-  text-align: center;
-  font-weight: bold;
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #e6eef5;
+  color: #2f3e46;
+}
+
+.view-layout {
+  display: flex;
+  gap: 40px;
+  padding: 60px;
+  justify-content: center;
+}
+
+.view-image {
+  width: 50%;
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+.view-image img {
+  width: 100%;
+  display: block;
+}
+
+.view-info {
+  background: white;
+  padding: 30px;
+  width: 400px;
+  border-radius: 26px;
+}
+
+.view-info h2 {
+  margin-bottom: 20px;
+}
+
+.view-info p {
+  margin-bottom: 10px;
+}
+
+.view-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  padding: 8px 14px;
+  background: #3a86ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: #d62828;
 }

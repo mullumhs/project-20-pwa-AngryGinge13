@@ -1,32 +1,71 @@
 {% extends "base.html" %} {% block title %}Update Car{% endblock %} {% block
 content %}
 <link rel="stylesheet" href="{{ url_for('static', filename='edit.css') }}" />
-<div class="container">
-  <h2>Update Car</h2>
-  <form method="POST">
-    <label>Make:</label>
-    <input type="text" name="make" value="{{ car.make }}" /><br />
 
-    <label>Model:</label>
-    <input type="text" name="model" value="{{ car.model }}" /><br />
+<div class="page-layout">
+  <!-- LEFT: IMAGE -->
+  <div class="image-panel">
+    <img src="{{ url_for('car_image', car_id=car.id) }}" alt="Car image" />
+  </div>
 
-    <label>Color:</label>
-    <input type="text" name="color" value="{{ car.color }}" /><br />
+  <!-- RIGHT: FORM -->
+  <div class="form-wrapper">
+    <form method="POST" enctype="multipart/form-data">
+      <h2>Update Car</h2>
 
-    <label>Horsepower:</label>
-    <input type="number" name="horsepower" value="{{ car.horsepower }}" /><br />
+      <label class="form-label">Make:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="make"
+        value="{{ car.make }}"
+      />
 
-    <label>Year:</label>
-    <input type="number" name="year" value="{{ car.year }}" /><br />
+      <label class="form-label">Model:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="model"
+        value="{{ car.model }}"
+      />
 
-    <label>Odometer:</label>
-    <input type="number" name="odometer" value="{{ car.odometer }}" /><br />
+      <label class="form-label">Color:</label>
+      <input
+        class="form-control"
+        type="text"
+        name="color"
+        value="{{ car.color }}"
+      />
 
-    <button type="submit">Save Changes</button>
-  </form>
-  <form action="{{ url_for('delete_item') }}" method="POST">
-    <input type="hidden" name="id" value="{{ car.id }}" />
-    <button type="submit">Delete</button>
-  </form>
+      <label class="form-label">Horsepower:</label>
+      <input
+        class="form-control"
+        type="number"
+        name="horsepower"
+        value="{{ car.horsepower }}"
+      />
+
+      <label class="form-label">Year:</label>
+      <input
+        class="form-control"
+        type="number"
+        name="year"
+        value="{{ car.year }}"
+      />
+
+      <label class="form-label">Odometer:</label>
+      <input
+        class="form-control"
+        type="number"
+        name="odometer"
+        value="{{ car.odometer }}"
+      />
+
+      <label class="form-label">Change Image:</label>
+      <input class="form-control" type="file" name="image" />
+
+      <button class="btn" type="submit">Save Changes</button>
+    </form>
+  </div>
 </div>
 {% endblock %}

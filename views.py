@@ -23,7 +23,6 @@ def init_routes(app):
     @app.route('/car/<int:car_id>/update', methods=['GET', 'POST'], endpoint='update_car')
     def update_car(car_id):
         car = Car.query.get_or_404(car_id)
-
         if request.method == 'POST':
             car.make = request.form['make']
             car.model = request.form['model']
@@ -32,10 +31,18 @@ def init_routes(app):
             car.year = request.form['year']
             car.odometer = request.form['odometer']
 
+            file = request.files.get('image')
+
+            if file and file.filename != "":
+                car.image = file.read()
+                car.filename = file.filename
+
             db.session.commit()
-            return redirect(url_for('get_items', id=car.id))
+            return redirect(url_for('get_items'))
 
         return render_template('edit.html', car=car)
+
+
 
     @app.route('/delete', methods=['POST'])
     def delete_item():
