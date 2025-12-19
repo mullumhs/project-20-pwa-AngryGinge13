@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash
 from models import db, Car, Info
+from sqlalchemy import or_, cast, String
 
 def init_routes(app):
 
@@ -99,6 +100,7 @@ def init_routes(app):
                 horsepower=int(request.form['horsepower']),
                 year=int(request.form['year']),
                 odometer=int(request.form['odometer']),
+                engine=request.form['engine'],
                 image=image_data,
                 filename=filename
             )
@@ -136,7 +138,16 @@ def init_routes(app):
         search_query = request.args.get('query', ' ')
         search_query = search_query.strip().lower()
         if search_query:
-            items = Car.query.filter(Car.make.ilike(f'%{search_query}%')).all()
+                items = Car.query.filter(
+                 or_(
+                     Car.make.ilike(f'%{search_query}%'),
+                     Car.model.ilike(f'%{search_query}%'),
+                     Car.year.ilike(f'%{search_query}%'),
+                     Car.odometer.ilike(f'%{search_query}%'),
+                     Car.engine.ilike(f'%{search_query}%'),
+                     Car.color.ilike(f'%{search_query}%'),
+                     Car.odometer.ilike(f'%{search_query}%'))
+                 ).all()
         else:
             items = Car.query.all()
 

@@ -11,6 +11,7 @@ class Car(db.Model):
     horsepower = db.Column(db.String)
     year = db.Column(db.Integer)
     odometer = db.Column(db.Integer)
+    engine = db.Column(db.String)
     image = db.Column(db.LargeBinary)
     filename = db.Column(db.String(100))
     

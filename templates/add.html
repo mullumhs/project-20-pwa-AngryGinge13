@@ -1,15 +1,15 @@
 {% extends "base.html" %} {% block title %}Add Car - My Inventory App{% endblock
 %} {% block content %}
-<link rel="stylesheet" href="{{ url_for('static', filename='add.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/add.css') }}" />
 
 <form method="post" enctype="multipart/form-data">
-  <label for="formFile" class="form-label">Upload Car Image</label>
   <input class="form-control mb-2" type="text" name="make" placeholder="Make" />
   <input
     class="form-control mb-2"
     type="text"
     name="model"
     placeholder="Model"
+    required
   />
   <input
     class="form-control mb-2"
@@ -22,6 +22,12 @@
     type="number"
     name="horsepower"
     placeholder="Horsepower"
+  />
+  <input
+    class="form-control mb-2"
+    type="text"
+    name="engine"
+    placeholder="Engine"
   />
   <input
     class="form-control mb-2"
